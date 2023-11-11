@@ -146,9 +146,6 @@ public static void main (String args[]) {
         ref.atualizarVarBase(5);
         System.out.println ( "=> Imprime o valor de var_base");
         ref.imprimirVarBase();
-        
-
-        
     }
 }*/
 
@@ -183,7 +180,7 @@ public static void main (String args[]) {
     }
 }*/
 
-public class Principal {
+/*public class Principal {
 
     public static void main(String [ ] args) {
 
@@ -208,4 +205,5 @@ public class Principal {
        System.out.println(s) ;
 
     }
-}
+}*/
+

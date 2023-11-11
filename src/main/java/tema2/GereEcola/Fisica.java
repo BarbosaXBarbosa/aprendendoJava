@@ -20,11 +20,15 @@ public class Fisica extends Pessoa {
         setIdade ();
     }
     @Override
-    public void setID ( String CPF ) {
-        if ( validaCPF ( CPF ) )
+    public boolean setID ( String CPF ) {
+        if ( validaCPF ( CPF ) ){
             this.identificador = CPF;
-        else
+            return true;
+        }
+        else{
             System.out.println ( "ERRO: CPF invalido!" );
+            return false;
+        }
     }
     protected boolean validaCPF(String CPF) {
         if (CPF == null || CPF.length() != 11 || CPF.chars().allMatch(Character::isDigit)) {

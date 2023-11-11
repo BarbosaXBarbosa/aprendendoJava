@@ -12,10 +12,13 @@
 package tema2.GereEcola;
 
 //Importações 
+
+import tema3.Testes.ErroValidacaoCNPJ;
+
 public interface Identificador {
     final int tamanho_max = 21;
     boolean validateID (String id);
     void formatID (int tipo);
-    void setID (String id);
+    boolean setID (String id) throws Throwable;
     String getID ();
 }

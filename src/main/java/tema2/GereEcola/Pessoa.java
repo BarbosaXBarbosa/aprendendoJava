@@ -17,6 +17,7 @@ import java.util.Calendar;
 import static java.util.Calendar.DATE;
 import static java.util.Calendar.MONTH;
 import static java.util.Calendar.YEAR;
+import tema3.Testes.ErroValidacaoCNPJ;
 
 //Classe
 /*public class Pessoa {
@@ -238,7 +239,7 @@ public abstract class Pessoa implements iPessoa , Identificador {
         return this.nome;
     }
     @Override
-    public abstract void setID ( String identificador );
+    public abstract boolean setID ( String identificador ) throws Throwable;
    
     @Override
     public String getID ( ) {
