@@ -17,6 +17,7 @@ import tema2.GereEcola.Fisica;
 import tema2.GereEcola.Juridica;
 import tema2.GereEcola.Pessoa;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 //Classe
@@ -76,7 +77,7 @@ public class Principal {
         ref [ 1 ].setID("43186666002632");
     }*/
     
-    private static Fibonacci fib;
+    /*private static Fibonacci fib;
     private static Scanner entrada;
      
     public static void main ( String args [ ] ) {
@@ -90,5 +91,100 @@ public class Principal {
                 System.exit ( 0 );
             System.out.println ( "O " + num + "n-esimo termo de Fibonacci é: " + fib.CalcularFibonacci( num ) );
         } while ( num >= 0 );
+    }*/
+    
+    
+    //Implementando tratamento direto no método
+    /*public static void main ( String args [ ] ) {
+        int dividendo, divisor;
+        String controle = "s";
+	        
+        Calculadora calc = new Calculadora ( );
+        Scanner s = new Scanner ( System.in );
+        do {    
+            System.out.println ( "Entre com o dividendo." );
+            dividendo = s.nextInt();
+            System.out.println ( "Entre com o divisor." );
+            divisor = s.nextInt();
+            System.out.println ( "O quociente é: " + calc.divisao ( dividendo , divisor ) );
+            System.out.println ( "Repetir?" );
+            controle = s.next().toString();
+        } while ( !controle.equals( "n" ) );
+        s.close();
+    }*/
+    
+    //Implementando tratamento com a instrução throws
+    /*public static void main ( String args [ ] ) {
+        int dividendo, divisor;
+        String controle = "s";
+	        
+        Calculadora calc = new Calculadora ( );
+        Scanner s = new Scanner ( System.in );
+        do {    
+            System.out.println ( "Entre com o dividendo." );
+            dividendo = s.nextInt();
+            System.out.println ( "Entre com o divisor." );
+            divisor = s.nextInt();
+            try {
+                System.out.println ( "O quociente é: " + calc.divisao ( dividendo , divisor ) );
+            } catch ( ArithmeticException e ) {
+                System.out.println( "ERRO: Divisão por zero! " + e.getMessage() );
+            }
+            System.out.println ( "Repetir?" );
+            controle = s.next().toString();
+        } while ( !controle.equals( "n" ) );
+        s.close();
+    }*/
+    
+    
+    //Encadeamento de exceções
+    private static Scanner entrada;
+    private static long res = 0;
+    private static long fat = 0;
+     
+    public static void main ( String args [ ] ) {
+        long num = 0;
+        entrada = new Scanner ( System.in );
+        do {
+            System.out.println ( "Entre com um numero inteiro ou \"-1\" para sair: " );
+            try {
+                num = lerEntrada ( entrada );
+            } catch ( ErroValidacao erro ) {
+                System.out.println ( "Entrada inválida!" );
+                System.out.println ( "Causa: " + erro.getCause ( ) );
+                erro.printStackTrace( System.out );
+                System.exit ( -1 );
+            }
+            if ( num == -1 )
+                System.exit ( 0 );
+            else
+                try {
+                    System.out.println ( "O fatorial de " + num + " é: " + calcularFatorial( num ) );
+                } catch ( ErroValidacao erro ) {
+                    erro.printStackTrace( System.out );
+                }
+        } while ( num >= 0 );
+    }
+    private static long lerEntrada ( Scanner entrada ) throws ErroValidacao {
+        try {
+            return entrada.nextLong();
+        } catch ( InputMismatchException erro_entrada ) {
+            ErroValidacao erro = new ErroValidacao ( "A entrada " + entrada.next() + " nao eé um numero inteiro!" );
+            erro.atribuirCausa ( erro_entrada );
+            throw erro;
+        }
+    }
+    private static long calcularFatorial ( long num ) throws ErroValidacao {
+        if ( num > 0 ) { 
+            res = calcularFatorial ( num - 1 );
+            fat = num * res;
+            if ( ( fat / res ) != num ) {
+                throw new ErroValidacao ( "Overflow!");
+            }
+            else
+                return fat;
+        }
+        else
+            return 1;
     }
 }

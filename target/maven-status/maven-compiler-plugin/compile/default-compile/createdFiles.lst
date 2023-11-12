@@ -9,6 +9,7 @@ tema2\GereEcola\Base.class
 tema1\JavaBasico\Endereco.class
 tema2\GereEcola\Auxiliar.class
 tema1\JavaBasico\PersisteObjetosTemplate.class
+tema3\Testes\Calculadora.class
 tema1\JavaBasico\Departamento.class
 tema2\GereEcola\Desempenho.class
 tema2\GereEcola\Endereco.class
@@ -17,6 +18,7 @@ tema1\JavaBasico\PersisteEmMemoria.class
 tema1\JavaBasico\Diretor.class
 tema1\JavaBasico\Escola.class
 tema2\GereEcola\Pessoa.class
+tema3\Testes\ErroValidacao.class
 tema2\GereEcola\Aluno.class
 tema2\GereEcola\Juridica.class
 tema2\GereEcola\Derivada.class
