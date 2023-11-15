@@ -1,4 +1,5 @@
 tema1\JavaBasico\Pessoa.class
+tema3\Testes\nomeInvalidoExcecao.class
 tema1\JavaBasico\Aluno.class
 tema1\JavaBasico\Empregado.class
 tema2\GereEcola\Fisica.class
@@ -17,7 +18,10 @@ tema1\JavaBasico\Principal.class
 tema1\JavaBasico\PersisteEmMemoria.class
 tema1\JavaBasico\Diretor.class
 tema1\JavaBasico\Escola.class
+tema3\Testes\ExemploEncadeamentoExcecoes.class
+tema3\Testes\ErroOperando.class
 tema2\GereEcola\Pessoa.class
+tema3\Testes\OperacaoArray.class
 tema3\Testes\ErroValidacao.class
 tema2\GereEcola\Aluno.class
 tema2\GereEcola\Juridica.class

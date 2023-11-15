@@ -28,10 +28,26 @@ public class Calculadora {
     
     
     
-    public int divisao ( int dividendo , int divisor ) throws ArithmeticException
+    /*public int divisao ( int dividendo , int divisor ) throws ArithmeticException
     {
         if ( divisor == 0 )
             throw new ArithmeticException ( "Divisor nulo." );  
+        return dividendo / divisor;
+    }*/
+    
+    
+    //Relançamento de exceção, caso você queira pular o tratamento por ora.
+    public int divisao ( int dividendo , int divisor ) throws ArithmeticException
+    {
+        try {
+            if ( divisor == 0 )
+                throw new ArithmeticException ( "Divisor nulo." );
+        }
+        catch (Exception e)
+        { 
+            System.out.println( "ERRO: Divisão por zero! " + e.getMessage() );
+            throw e;
+        }
         return dividendo / divisor;
     }
 } 

@@ -138,7 +138,7 @@ public class Principal {
     
     
     //Encadeamento de exceções
-    private static Scanner entrada;
+    /*private static Scanner entrada;
     private static long res = 0;
     private static long fat = 0;
      
@@ -186,5 +186,102 @@ public class Principal {
         }
         else
             return 1;
-    }
+    }*/
+    
+    //Relaçando exceção
+    /*public static void main ( String args [ ] ) {
+        int dividendo, divisor;
+        String controle = "s";
+	        
+        Calculadora calc = new Calculadora ( );
+        Scanner s = new Scanner ( System.in );
+        do {    
+            System.out.println ( "Entre com o dividendo." );
+            dividendo = s.nextInt();
+            System.out.println ( "Entre com o divisor." );
+            divisor = s.nextInt();
+            try {
+                System.out.println ( "O quociente é: " + calc.divisao ( dividendo , divisor ) );
+            } catch ( ArithmeticException e ) {
+                System.out.println( "ERRO: Divisão por zero! " + e.getMessage() );
+            }
+            System.out.println ( "Repetir?" );
+            controle = s.next().toString();
+        } while ( !controle.equals( "n" ) );
+        s.close();
+    }*/
+    
+    //Criando tratamento de exceção comum
+    /*public static void main ( String args [ ] ) throws ErroValidacao {
+        int indice1, indice2;
+        OperacaoArray calc = new OperacaoArray ();
+        char[] op1 = null;
+        char[] op2 = null;
+        Scanner s = new Scanner ( System.in );
+        try {
+            System.out.println ( "Entre com o tamanho do primeiro array." );
+            indice1 = s.nextInt();
+            System.out.println ( "Entre com o tamanho do segundo array." );
+            indice2 = s.nextInt();
+            
+            op1 = new char [indice1];
+            op2 = new char [indice2];
+            
+        } catch ( OutOfMemoryError e ) {
+            Runtime runtime = Runtime.getRuntime ();
+            System.out.println ( "Memoria insuficiente!" );
+            System.out.println ( "A memória total da MVJ eh " + runtime.totalMemory() + " e o máximo eh " + runtime.maxMemory () );
+            System.out.println ( "Reconfigure a MVJ usando o parametro -Xmx<size>. Você precisa de " + 16*Short.MAX_VALUE + " soh para os vetores."); 
+            System.exit ( -1 );
+        }        
+
+        char[] resultado = calc.concatenarArray(op1, op2);
+
+        System.out.println("O tamanho do array resultante é: " + resultado.length);
+    }*/
+    
+    public static void main ( String args [ ] ) { 
+        char[] op1 = { 'J' , 'A' , 'V' , 'A' , '.' }; 
+        char[] op2 = new char [4]; 
+        System.out.println ( copiarArray ( op1 , op2 ) );         
+    }     
+    private static char[] copiarArray ( char[] op1 , char[] op2 ) { //copia o vetor op1 para op2 
+        try { 
+            if ( verificarOperandos ( op1 , op2 ) && verificarTamanhoOperandos ( op1 , op2 ) ) { 
+                System.arraycopy ( op1 , 0 , op2 , 0 , op1.length ); 
+                return op2; 
+            } else 
+                System.out.println( "A operacao nao pode ser realizada!" ); 
+        } catch ( NullPointerException e ) { 
+            System.out.println ( "Ponteiro para objeto nulo!" );
+            e.getCause();
+            throw e;
+             
+        } catch ( ArrayIndexOutOfBoundsException e ) { 
+            System.out.println ( "Tentativa de extrapolar o limite do vetor!" ); 
+            System.out.println ( e.getMessage() ); 
+            System.exit ( -1 ); 
+        } 
+        return null; 
+    } 
+    private static boolean verificarOperandos ( char[] op1 , char[] op2 ) throws ErroOperando , NullPointerException { 
+        boolean check = false; 
+        if ( ( op1 == null ) && ( op2 == null ) ) 
+            throw new ErroOperando ( "Ambos operandos sao nulos!" ); 
+        else if ( op1 == null ) 
+            throw new ErroOperando ( "Primeiro operando eh nulo!" ); 
+        else if ( op2 == null ) 
+            throw new ErroOperando ( "Segundo operando eh nulo!" ); 
+        else 
+            check = true; 
+        return check; 
+    } 
+    private static boolean verificarTamanhoOperandos ( char[] op1 , char[] op2 ) { 
+        if ( op1.length > op2.length ) { 
+            System.out.println ( "Os tamanhos dos vetores são incompativeis! "); 
+            throw new ErroOperando ( new ArrayIndexOutOfBoundsException ( "ESPACO INSUFICIENTE NO SEGUNDO OPERANDO!" ) ); 
+        } else     
+            return true; 
+    } 
 }
+
